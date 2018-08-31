@@ -49,6 +49,7 @@
     <Compile Include="MessageDigest.cs" />
     <Compile Include="Payload\Quickteller\BillPaymentItem.cs" />
     <Compile Include="Payload\Quickteller\BillPaymentNotification.cs" />
+    <Compile Include="Payload\Quickteller\BillPaymentTransaction.cs" />
     <Compile Include="Payload\Quickteller\BillsPaymentResponseViewModel.cs" />
     <Compile Include="Payload\Quickteller\CustomerValidationModel.cs" />
     <Compile Include="Payload\Quickteller\NameEnquiry.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Payload\Quickteller\ServiceError.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\IQuickTellerBillProvider.cs" />
+    <Compile Include="Providers\PaymentTransactionResponseViewModel.cs" />
     <Compile Include="Providers\QuickTellerBillProvider.cs" />
   </ItemGroup>
   <ItemGroup>

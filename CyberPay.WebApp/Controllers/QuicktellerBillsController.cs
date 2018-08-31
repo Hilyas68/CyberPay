@@ -38,5 +38,15 @@ namespace CyberPay.WebApp.Controllers
             return Request.CreateResponse(result);
         }
 
+        [HttpPost]
+        [Route("sendpaymentTransaction")]
+        public HttpResponseMessage SendPaymentTraction(BillPaymentTransaction billPayment)
+        {
+            var banks = billProvider.SendBillPaymentTransaction(billPayment.Amount, billPayment.PinData, billPayment.SecureData, billPayment.Msisdn, billPayment.TransactionRef, billPayment.CardBin);
+           
+            ApiResult<List<BillPaymentTransaction>> result = new ApiResult<List<BillPaymentTransaction>>();
+            result.Data = banks;
+            return Request.CreateResponse(result);
+        }
     }
 }

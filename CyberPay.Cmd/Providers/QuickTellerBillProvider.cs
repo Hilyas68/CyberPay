@@ -102,7 +102,7 @@ namespace CyberPay.Cmd.Providers
                 responseobject.Banks = new List<QuicktellerBank>();
             }
 
-            return responseobject.Banks;
+            return banksDetails;
         }
 
 
@@ -169,6 +169,30 @@ namespace CyberPay.Cmd.Providers
             }
 
             return customer;
+        }
+
+
+        public List<BillPaymentTransaction> SendBillPaymentTransaction(decimal amount, string pinData, string secureData, long msisdn, string transactionRef, long cardBin)
+        {
+            BillPaymentTransaction billPaymentTransaction = new BillPaymentTransaction()
+            {
+                Amount = amount,
+                CardBin = cardBin,
+                Msisdn = msisdn,
+                PinData = pinData,
+                SecureData = secureData,
+                TransactionRef = transactionRef
+            };
+
+
+            var convertPayment = JsonConvert.SerializeObject(billPaymentTransaction);
+            var billresponse = this.SendRequest(convertPayment,
+           $"{ConfigurationManager.AppSettings["QuicktellerUrl"]}/transactions", "POST");
+
+            var responseobject = JsonConvert.DeserializeObject<List<BillPaymentTransaction>>(billresponse);
+            return responseobject;
+
+
         }
 
         public BillsPaymentResponseViewModel SendBillPaymentNotification(string paymentcode,
@@ -546,5 +570,6 @@ namespace CyberPay.Cmd.Providers
             string timeStamp = ((int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds).ToString();
             return timeStamp.ToString();
         }
+
     }
 }
