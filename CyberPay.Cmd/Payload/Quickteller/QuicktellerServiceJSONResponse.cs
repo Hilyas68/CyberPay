@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CyberPay.Cmd.Payload.Quickteller
 {
@@ -17,7 +13,9 @@ namespace CyberPay.Cmd.Payload.Quickteller
         public List<BillPaymentItem> paymentsitems { get; set; }
         [JsonProperty("customers")]
         public List<QuicktellerCustomerViewModel> customers { get; set; }
-        [JsonProperty("accountName")]
+        [JsonProperty("accounxtName")]
         public NameEnquiry accountName { get; set; }
+        [JsonProperty("banks")]
+        public List<QuicktellerBanks> Banks { get; set; }
     }
 }

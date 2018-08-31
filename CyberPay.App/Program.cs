@@ -1,9 +1,5 @@
 ﻿using CyberPay.Cmd.Providers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CyberPay.App
 {
@@ -12,6 +8,16 @@ namespace CyberPay.App
         static void Main(string[] args)
         {
             var billProvider = new QuickTellerBillProvider();
+
+            var banks = billProvider.GetBankDetails();
+
+            foreach (var item in banks)
+            {
+                Console.WriteLine($"Bank Name: {item.bankName} \t Bank Code: {item.bankCode}");
+
+            }
+
+
             var biller = billProvider.GetBillerById("104");
 
 

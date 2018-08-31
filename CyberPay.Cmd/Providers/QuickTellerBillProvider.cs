@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CyberPay.Cmd.Payload.Quickteller;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -6,10 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Web;
-using CyberPay.Cmd.Payload.Quickteller;
-using Newtonsoft.Json;
 
 namespace CyberPay.Cmd.Providers
 {
@@ -83,6 +82,29 @@ namespace CyberPay.Cmd.Providers
 
             return responseobject.Billers;
         }
+
+
+        public List<QuicktellerBanks> GetBankDetails()
+        {
+            String bankresponse = this.SendRequest("", $"{ConfigurationManager.AppSettings["QuicktellerUrl"]}/configuration/fundstransferbanks", "GET");
+
+            var responseobject = JsonConvert.DeserializeObject<QuicktellerServiceJSONResponse>(bankresponse);
+
+            if (responseobject == null)
+            {
+                responseobject = new QuicktellerServiceJSONResponse();
+            }
+
+            var banksDetails = responseobject.Banks;
+
+            if (banksDetails == null)
+            {
+                responseobject.Banks = new List<QuicktellerBanks>();
+            }
+
+            return responseobject.Banks;
+        }
+
 
         public QuicktellerPaymentItemsViewModel GetBillerById(string billerId)
         {
