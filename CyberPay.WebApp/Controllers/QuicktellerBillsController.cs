@@ -32,8 +32,8 @@ namespace CyberPay.WebApp.Controllers
         [Route("getBanks")]
         public HttpResponseMessage GetBanks()
         {
-            var banks = billProvider.GetBankDetails();
-            ApiResult<List<QuicktellerBanks>> result = new ApiResult<List<QuicktellerBanks>>();
+            var banks = billProvider.GetBankCodes();
+            ApiResult<List<QuicktellerBank>> result = new ApiResult<List<QuicktellerBank>>();
             result.Data = banks;
             return Request.CreateResponse(result);
         }

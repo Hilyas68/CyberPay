@@ -8,7 +8,7 @@ namespace CyberPay.Cmd.Providers
         NameEnquiry ValidateName(string bankCode, string accountId);
         List<QuicktellerBillCategory> GetBillCategories();
         List<QuicktellerBiller> GetBillers();
-        List<QuicktellerBanks> GetBankDetails();
+        List<QuicktellerBank> GetBankCodes();
         BillsPaymentResponseViewModel SendBillPaymentNotification(string paymentcode, string customerUniqueReference, string customerMobile, string customerEmail, string transactionUniqueReference, decimal amount);
         QuicktellerCustomerViewModel ValidateCustomer(string paymentCode, string subscriberId);
 

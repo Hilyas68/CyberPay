@@ -2,7 +2,7 @@
 
 namespace CyberPay.Cmd.Payload.Quickteller
 {
-    public class QuicktellerBanks
+    public class QuicktellerBank
     {
         [JsonProperty("id")]
         public string id { get; set; }

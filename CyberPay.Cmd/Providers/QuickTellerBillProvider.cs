@@ -84,7 +84,7 @@ namespace CyberPay.Cmd.Providers
         }
 
 
-        public List<QuicktellerBanks> GetBankDetails()
+        public List<QuicktellerBank> GetBankCodes()
         {
             String bankresponse = this.SendRequest("", $"{ConfigurationManager.AppSettings["QuicktellerUrl"]}/configuration/fundstransferbanks", "GET");
 
@@ -99,7 +99,7 @@ namespace CyberPay.Cmd.Providers
 
             if (banksDetails == null)
             {
-                responseobject.Banks = new List<QuicktellerBanks>();
+                responseobject.Banks = new List<QuicktellerBank>();
             }
 
             return responseobject.Banks;

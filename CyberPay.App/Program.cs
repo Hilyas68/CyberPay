@@ -9,7 +9,7 @@ namespace CyberPay.App
         {
             var billProvider = new QuickTellerBillProvider();
 
-            var banks = billProvider.GetBankDetails();
+            var banks = billProvider.GetBankCodes();
 
             foreach (var item in banks)
             {
